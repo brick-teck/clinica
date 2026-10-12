@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Configure config.siteUrl e gere novamente para informar o sitemap real.

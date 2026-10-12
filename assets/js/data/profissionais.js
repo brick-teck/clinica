@@ -1,0 +1,26 @@
+const rows = [
+ ['clara-monteiro','Dra. Clara Monteiro',['cardiologia'],['unidade-centro'],'CRM EXEMPLO 001'],
+ ['rafael-vidal','Dr. Rafael Vidal',['dermatologia','alergologia'],['unidade-centro','unidade-norte'],'CRM EXEMPLO 002'],
+ ['helena-duarte','Dra. Helena Duarte',['ginecologia-e-obstetricia'],['unidade-centro','unidade-norte'],'CRM EXEMPLO 003'],
+ ['lucas-azevedo','Dr. Lucas Azevedo',['pediatria'],['unidade-norte'],'CRM EXEMPLO 004'],
+ ['marina-alves','Marina Alves',['psicologia'],['unidade-centro','unidade-norte'],'CRP EXEMPLO 005'],
+ ['andre-fontes','Dr. André Fontes',['ortopedia-e-traumatologia','cirurgia-de-mao'],['unidade-centro'],'CRM EXEMPLO 006'],
+ ['beatriz-nunes','Beatriz Nunes',['nutricao'],['unidade-centro','unidade-norte'],'CRN EXEMPLO 007'],
+ ['gabriel-reis','Dr. Gabriel Reis',['neurologia','medicina-da-dor'],['unidade-centro','unidade-norte'],'CRM EXEMPLO 008'],
+ ['sofia-campos','Dra. Sofia Campos',['clinica-medica','geriatria'],['unidade-centro','unidade-norte'],'CRM EXEMPLO 009'],
+ ['pedro-lima','Dr. Pedro Lima',['gastroenterologia','endoscopia','colonoscopia'],['unidade-centro'],'CRM EXEMPLO 010'],
+ ['laura-prado','Laura Prado',['fisioterapia-adulto-e-esportiva'],['unidade-norte'],'CREFITO EXEMPLO 011'],
+ ['tomas-ribeiro','Dr. Tomás Ribeiro',['oftalmologia','oftalmologia-pediatrica'],['unidade-centro','unidade-norte'],'CRM EXEMPLO 012'],
+ ['ana-freitas','Dra. Ana Freitas',['endocrinologia-e-metabologia','reumatologia'],['unidade-centro','unidade-norte'],'CRM EXEMPLO 013'],
+ ['daniel-costa','Dr. Daniel Costa',['cirurgia-geral','cirurgia-do-aparelho-digestivo','coloproctologia'],['unidade-centro'],'CRM EXEMPLO 014'],
+ ['isabela-moraes','Dra. Isabela Moraes',['pneumologia','otorrinolaringologia'],['unidade-centro','unidade-norte'],'CRM EXEMPLO 015'],
+ ['paula-salles','Paula Salles',['fonoaudiologia'],['unidade-centro','unidade-norte'],'CRFa EXEMPLO 016'],
+ ['eduardo-faria','Dr. Eduardo Faria',['psiquiatria'],['unidade-centro','unidade-norte'],'CRM EXEMPLO 017'],
+ ['renata-borges','Dra. Renata Borges',['anestesiologia','cirurgia-de-cabeca-e-pescoco'],['unidade-centro'],'CRM EXEMPLO 018'],
+];
+export const professionals = rows.map(([slug,name,specialties,units,registration],index)=>({
+ slug,name,specialties,units,registration,plans:['horizonte','viva'],portrait:index,
+ bio:'Perfil fictício criado para apresentar a equipe multidisciplinar do template. A proposta de atendimento valoriza a escuta, a comunicação clara e a continuidade do cuidado.',
+ education:['Graduação na Instituição Modelo — formação fictícia','Formação complementar na área de atuação — exemplo demonstrativo'],
+ featured:index<4,
+}));

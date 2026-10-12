@@ -1,0 +1,15 @@
+import {writeFileSync} from 'node:fs';
+import {config} from '../assets/js/data/config.js';
+import {specialties} from '../assets/js/data/especialidades.js';
+import {professionals} from '../assets/js/data/profissionais.js';
+import {units} from '../assets/js/data/unidades.js';
+import {articles} from '../assets/js/data/artigos.js';
+const demo=!config.siteUrl;
+const base=demo?'https://example.com/':config.siteUrl.replace(/\/?$/,'/');
+if(!/^https?:\/\//.test(base))throw new Error('config.siteUrl deve ser uma URL HTTP(S) absoluta.');
+const routes=['index.html','sobre.html','especialidades.html','profissionais.html','planos.html','unidades.html','blog.html','contato.html','privacidade.html'];
+for(const [route,data] of [['especialidade',specialties],['profissional',professionals],['unidade',units],['artigo',articles]])for(const item of data)routes.push(`${route}.html?slug=${item.slug}`);
+const xmlEscape=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+writeFileSync('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n${demo?'<!-- Demonstrativo: example.com é um domínio reservado. Configure config.siteUrl e execute novamente antes de publicar. -->\n':''}<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route=>` <url><loc>${xmlEscape(new URL(route,base).href)}</loc></url>`).join('\n')}\n</urlset>\n`);
+writeFileSync('robots.txt',`User-agent: *\nAllow: /\n${demo?'# Configure config.siteUrl e gere novamente para informar o sitemap real.':`Sitemap: ${new URL('sitemap.xml',base).href}`}\n`);
+console.log(`Sitemap com ${routes.length} URLs ${demo?'demonstrativas; configure o domínio real antes de publicar.':'geradas para '+base}`);
